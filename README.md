@@ -1,38 +1,24 @@
-# Babynama - Frontend Developer Intern Assignment
 
-Welcome to the Babynama internship assignment! This short project is designed to simulate a real-world task and help us understand your skills and thought process.
+# Babynama Intern Assignment - Webinars Page
 
-**Objective:** Build a small, self-contained feature in Next.js.  
-**Time Allotment:** 2-4 hours.
+This project implements the "Upcoming Live Webinars" feature as part of the Babynama Frontend Intern Assignment.
 
----
+## Live URL
 
-### **Part 1: Getting Started & The Task**
+[PASTE YOUR VERCEL DEPLOYMENT URL HERE]
+*Example: `https://your-project-name.vercel.app/webinars`*
 
-1.  **Repository Setup:** You have already created a repository from this template. Now, install the dependencies:
-    ```bash
-    npm install
-    ```
-2.  **The User Story:** Your goal is to implement the following feature:
-    > "As a busy parent exploring Babynama's resources, I want to see a simple, clear list of upcoming live webinars on a dedicated page so I can quickly see what's available."
+## Choices Made
 
-3.  **Your Implementation Tasks:**
-    * **Create a Page:** Build a new page at the `/webinars` route.
-    * **Display Data:** You don't need an API. Create a mock data array directly in your page file. The array should contain at least three webinar objects, each with an `id`, `title`, `speaker` (e.g., "Dr. Sumitra Meena"), and `date`. Render this data as a list of styled cards on the `/webinars` page.
-    * **Add Interactivity:** Add a "View Details" button to each card. When clicked, it should log the `id` of that webinar to the browser's console (e.g., `console.log("Viewing details for webinar ID: 3")`).
+I made the technical choice to separate the display of each webinar into its own `WebinarCard` component. This decision was driven by the principles of modularity and reusability. By creating a dedicated component, the main `/webinars` page component (`page.tsx`) remains cleaner and more focused on fetching and mapping the data. It also makes the individual webinar cards easier to style and maintain independently, improving the overall organization and readability of the codebase.
 
----
+## Roadblock & Learning
 
-### **Part 2: Submission**
+One small thing I got stuck on was understanding the behavior of Server Components versus Client Components in Next.js 13+ App Router. Initially, my "View Details" button, which uses an `onClick` event handler, was causing a runtime error: `"Error: Event handlers cannot be passed to Client Component props."` because the component was being treated as a Server Component by default.
 
-After you've finished coding, please complete the following two steps.
+I solved this by adding the `'use client';` directive at the very top of my `app/webinars/page.tsx` file. This explicit directive signals to Next.js that the component (and its children) should be rendered on the client side, allowing for interactive features like event handlers to function correctly. This helped me deepen my understanding of Next.js's rendering environments.
 
-1.  **Deploy Your Work:** Deploy your project to Vercel (it's free).
-2.  **Complete this README:** **This is the most important step.** Edit this `README.md` file in your repository to include:
-    * **Live URL:** [Add your Vercel deployment link here]
-    * **Choices Made:** [Briefly explain one technical choice you made]
-    * **Roadblock & Learning:** [Describe one small thing you had to look up and how you solved it]
-    * **Screenshot:**
-        ![Your Screenshot Here](https://via.placeholder.com/600x400.png?text=Paste+Screenshot+of+Your+App+Here)
+## Screenshot
 
-To submit, please share the link to your finished GitHub repository with us. Good luck!
+![Screenshot of Webinars Page UI](PASTE_PATH_TO_YOUR_SCREENSHOT_HERE)
+*Example: `public/screenshot-webinars-page.png` or an external URL if hosted.*
